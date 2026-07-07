@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>解約防止ナビ Ver3.0</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;margin:0;background:#f5f7fb;color:#222}
+header{background:#0f5caa;color:#fff;padding:18px 14px;text-align:center}
+h1{font-size:22px;margin:0}
+main{max-width:900px;margin:0 auto;padding:14px}
+.card,details{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+summary{font-size:19px;font-weight:800;cursor:pointer}
+h2{font-size:20px;margin:0 0 12px}
+h3{font-size:17px;margin:18px 0 8px}
+.script{background:#eef6ff;border-left:5px solid #0f5caa;padding:12px;border-radius:10px;line-height:1.75;white-space:pre-wrap}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;margin:10px 0;background:#ecfdf3;color:#027a48}
+.orange{background:#fffaeb;color:#b54708}
+.red{background:#fef3f2;color:#b42318}
+.blue{background:#eff8ff;color:#175cd3}
+ul,ol{line-height:1.8}
+.nav a{display:block;background:#0f5caa;color:#fff;text-decoration:none;padding:14px;border-radius:12px;margin:8px 0;font-weight:800;text-align:center}
+.nav a.sub{background:#667085}
+.copybox{width:100%;box-sizing:border-box;min-height:170px;border:1px solid #d0d5dd;border-radius:12px;padding:12px;font-size:15px;line-height:1.6}
+.small{font-size:13px;color:#eaf2ff}
+.note{font-size:14px;color:#667085;line-height:1.7}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border:1px solid #d0d5dd;padding:10px;text-align:left;vertical-align:top}
+th{background:#f2f4f7}
+</style>
+</head>
+<body>
+<header>
+<h1>解約防止ナビ Ver3.0</h1>
+<div class="small">催事乗換・サーバー別入口トーク・契約内容確認ゴール</div>
+</header>
+
+<main>
+
+<div class="card">
+<h2>共通導入</h2>
+<div class="script">〇〇様
+
+お世話になっております。
+ウォータースタンドの〇〇です。
+
+解約の件でご連絡です。
+今お時間大丈夫ですか？
+
+ありがとうございます。
+お送りさせていただいたメールはご覧いただけましたか？</div>
+
+<p class="note">目的：継続を迫るのではなく、他社の契約内容を確認してから判断してもらうこと。</p>
+
+<div class="nav">
+<a href="#flow">全体フロー</a>
+<a href="#event_route">催事ルート</a>
+<a href="#rescue_route">救済ルート</a>
+<a href="#server_map">サーバー入口別ルート一覧</a>
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+<details id="flow" open>
+<summary>全体フロー</summary>
+<span class="badge blue">上から順番に進める</span>
+
+<h3>STEP0：共通の電話入口</h3>
+<div class="script">〇〇様
+
+お世話になっております。
+ウォータースタンドの〇〇です。
+
+解約の件でご連絡です。
+今お時間大丈夫ですか？
+
+ありがとうございます。
+お送りさせていただいたメールはご覧いただけましたか？</div>
+
+<h3>STEP1：契約場所を確認</h3>
+<div class="script">ちなみに、どちらでご案内を受けられましたか？</div>
+<ul>
+<li>ドン・キホーテ</li>
+<li>ロピア</li>
+<li>ららぽーと</li>
+<li>アリオ</li>
+<li>コストコ</li>
+<li>ホームセンター</li>
+<li>その他</li>
+</ul>
+
+<p class="note">ショッピングモール・量販店・催事会場の場合は催事ルートへ。</p>
+<p><a href="#event_route">▶ 催事ルートへ</a></p>
+
+<h3>STEP2：契約サーバーを確認</h3>
+<div class="script">どちらのサーバーをご契約されましたか？</div>
+<ul>
+<li>エブリィフレシャス</li>
+<li>ハミングウォーター</li>
+<li>ロッカ</li>
+<li>しずくりあ</li>
+<li>スキット</li>
+<li>プレミアムウォーター</li>
+<li>コスモウォーター</li>
+<li>ウォーターワン</li>
+</ul>
+
+<p class="note">サーバー名が分かったら、下の「サーバー入口別ルート一覧」から該当サーバーを開く。</p>
+<p><a href="#server_map">▶ サーバー入口別ルート一覧へ</a></p>
+
+</details>
+
+<div id="event_route"></div>
+<details id="event" open>
+<summary>催事ルート</summary>
+<span class="badge orange">ドンキ・ロピア・ららぽーと等で発動</span>
+
+
+<h3>トーク</h3>
+<div class="script">ご存知ない方も多いんですが、
+
+ショッピングモールなどでのご案内は、メーカーさんが直接行っている場合と、
+ご案内専門の営業会社さんが担当されている場合があります。
+
+今回ご案内いただいた方は、メーカーの方か営業会社さんかご存知ですか？</div>
+
+<h3>お客様が「わからない」と言った場合</h3>
+<div class="script">ちなみに、いろんなメーカーのサーバーを並べていましたか？</div>
+
+<h3>「はい」の場合</h3>
+<div class="script">実はそれ、営業代行の会社が運営している場合が多いんです。
+
+メーカーの担当者ではなく、複数メーカーを取り扱う営業会社がご案内しているケースもあります。
+
+詳しく一度内容を確認した方が良いと思います。</div>
+
+<h3>STEP2：契約サーバーを確認</h3>
+<div class="script">どちらのサーバーをご契約されましたか？</div>
+<ul>
+<li>エブリィフレシャス</li>
+<li>ハミングウォーター</li>
+<li>ロッカ</li>
+<li>しずくりあ</li>
+<li>スキット</li>
+<li>プレミアムウォーター</li>
+<li>コスモウォーター</li>
+<li>ウォーターワン</li>
+</ul>
+
+<p>次のステップを選択してください。</p>
+
+<p><a href="#server_map">▶ サーバー別入口トークへ進む</a></p>
+
+<p style="color:#b42318;font-weight:800;font-size:16px;">
+⚠ お客様が現段階で相手営業への不信感を持っていると感じた場合は、そのまま救済ルート①へ進む。
+</p>
+
+
+<details open>
+
+<summary>救済ルート①</summary>
+<span class="badge red">催事ルート内で使用</span>
+
+<h3>入口トーク</h3>
+<div class="script">営業担当から具体的にどういう説明を受けたか覚えていますか？</div>
+
+<details>
+<summary>月額料金しか聞いていない</summary>
+<div class="script">
+レンタル商品と思って契約したつもりが、実際には買取商品だったというケースもございます。
+
+月額料金だけで判断してしまうと、そのあたりの説明を聞いていない場合もありますので、一度契約内容を見直してみた方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+<details>
+<summary>フィルター性能を比較できていない</summary>
+<div class="script">
+フィルター性能は、除去項目の数に注目しがちですが、実際は1日に使えるお水の量を確認した方が大切です。
+
+サーバーによっては、1日に3リットル程度しか使えないものもございます。
+
+ご家族で使われる場合や、お料理にも使われる場合は特に重要なポイントになりますので、一度契約内容やサーバー性能を確認してみた方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+<details>
+<summary>アフターサービスケアを聞いていない</summary>
+<div class="script">
+アフターサービスや故障時の対応については説明を受けましたか？
+
+ウォーターサーバーは長く使う商品ですので、契約後のサポート内容も大切なポイントになります。
+
+会社によっては修理対応やアフターサービスが有料の場合もございますので、一度契約内容を確認してみた方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+<details>
+<summary>間違った説明をされている可能性</summary>
+<div class="script">
+ウォーターサーバー本体を新しくされたい場合は、ご相談させてください。
+
+他社のサーバーとウォータースタンドのサーバーは異なりますので、契約内容を一度確認された方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+</details>
+
+
+
+</details>
+
+<div id="rescue_route"></div>
+
+
+<details id="server_map" open>
+<summary>サーバー入口別ルート一覧</summary>
+<span class="badge">サーバー名を選んで入口トークへ</span>
+<p class="note">契約されたサーバー名を確認し、該当サーバーの入口トークを1つだけ使う。</p>
+
+<h3>入口ルール</h3>
+<ul>
+<li>全部説明しない</li>
+<li>該当サーバーの入口トークを1つだけ使う</li>
+<li>反応があれば契約内容確認へ進む</li>
+<li>最後は「契約内容確認してみませんか？」で着地する</li>
+</ul>
+
+<details>
+<summary>エブリィフレシャス</summary>
+<span class="badge">入口：アフターサービス</span>
+
+<h3>入口トーク</h3>
+<div class="script">故障した時やフィルター交換の時の対応は確認されましたか？</div>
+
+<h3>未確認の場合</h3>
+<div class="script">アフターサービスや修理対応は、有料サービスの会社もあります。
+
+弊社は全て無料で対応させていただいております。
+
+また、お客様1人につき担当が1人つきますので、
+何かあった際も営業所へ直接ご相談いただけます。
+
+一度、契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+</details>
+<details>
+<summary>ハミングウォーター</summary>
+<span class="badge">入口：アフターサービス</span>
+
+<h3>入口トーク</h3>
+<div class="script">契約後のサポート体制は確認されましたか？</div>
+
+<h3>未確認の場合</h3>
+<div class="script">アフターサービスや修理対応は、有料サービスの会社もあります。
+
+弊社は全て無料で対応させていただいております。
+
+また、お客様1人につき担当が1人つきますので、
+何かあった際も営業所へ直接ご相談いただけます。
+
+一度、契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+</details>
+<details>
+<summary>ロッカ</summary>
+<span class="badge">入口：フィルター性能</span>
+
+<h3>入口トーク</h3>
+<div class="script">フィルターの性能は比較していただいていますか？</div>
+
+<h3>未比較の場合</h3>
+<div class="script">ロッカさんは除去項目数は多いんですが、
+1日にご利用いただける目安量は約3L程度になります。
+
+弊社のピュアライフは1日10Lを目安にご利用いただけます。
+
+また、サーバーによっては現在の月額料金を抑えることも可能です。
+
+一度、契約内容を見直してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+
+<p class="note">補足：月額の話が出た場合も、月額だけで戦わず「フィルター使用量」と「契約内容確認」に戻す。</p>
+</details>
+<details>
+<summary>しずくりあ</summary>
+<span class="badge">入口：契約内容・所有権</span>
+
+<h3>入口トーク</h3>
+<div class="script">契約期間や所有権については確認されましたか？</div>
+
+<h3>未確認の場合</h3>
+<div class="script">実はその部分を後から知る方も少なくありません。
+
+特に所有権や契約条件は、途中で変更できない部分になります。
+
+一度、契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+</details>
+<details>
+<summary>スキット</summary>
+<span class="badge">入口：契約内容・所有権</span>
+
+<h3>入口トーク</h3>
+<div class="script">契約期間や所有権については確認されましたか？</div>
+
+<h3>未確認の場合</h3>
+<div class="script">実はその部分を後から知る方も少なくありません。
+
+特に所有権や契約条件は、途中で変更できない部分になります。
+
+一度、契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+</details>
+<details>
+<summary>プレミアムウォーター</summary>
+<span class="badge">入口：契約期間・解約費</span>
+
+<h3>入口トーク</h3>
+<div class="script">契約期間や解約費用については確認されましたか？</div>
+
+<h3>未確認の場合</h3>
+<div class="script">プレミアムウォーターさんも人気の商品です。
+
+ただ、契約期間や解約費用は長く使う上で大切な部分になります。
+
+一度、契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+</details>
+<details>
+<summary>コスモウォーター</summary>
+<span class="badge">入口：契約期間・解約費</span>
+
+<h3>入口トーク</h3>
+<div class="script">契約期間や解約費用については確認されましたか？</div>
+
+<h3>未確認の場合</h3>
+<div class="script">コスモウォーターさんも人気の商品です。
+
+ただ、契約期間や解約費用は長く使う上で大切な部分になります。
+
+一度、契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+</details>
+<details>
+<summary>ウォーターワン</summary>
+<span class="badge red">未攻略・重点確認</span>
+
+<h3>入口トーク</h3>
+<div class="script">ちなみに、どの部分が今のサーバーと同じという説明でしたか？</div>
+
+<h3>「同じサーバーです」「月額が安くなります」と言われた場合</h3>
+<div class="script">サーバー本体が同じでも、
+契約内容やアフターサービスは会社ごとに異なる場合があります。
+
+本当に同じ条件かどうか、
+一度契約内容を確認してみませんか？<br><br>
+<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
+<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+
+<p class="note">記録推奨：ウォーターワンは未攻略枠。何と言われたか、何に反応したかを必ずメモ。</p>
+</details>
+</details>
+<details id="rescue2" open>
+
+<summary>救済ルート②（説明内容確認）</summary>
+<span class="badge red">契約内容を確認したいと言われた時</span>
+
+<h3>入口トーク</h3>
+<div class="script">営業担当の方から、具体的にどういう説明を受けたか覚えていますか？</div>
+
+<details>
+<summary>月額料金しか聞いていない</summary>
+<div class="script">
+レンタル商品と思って契約したつもりが、実際には買取商品だったというケースもございます。
+
+月額料金だけで判断してしまうと、そのあたりの説明を聞いていない場合もありますので、一度契約内容を見直してみた方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+<details>
+<summary>フィルター性能を比較できていない</summary>
+<div class="script">
+フィルター性能は、除去項目の数に注目しがちですが、実際は1日に使えるお水の量を確認した方が大切です。
+
+サーバーによっては、1日に3リットル程度しか使えないものもございます。
+
+ご家族で使われる場合や、お料理にも使われる場合は特に重要なポイントになりますので、一度契約内容やサーバー性能を確認してみた方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+<details>
+<summary>アフターサービスケアを聞いていない</summary>
+<div class="script">
+アフターサービスや故障時の対応については説明を受けましたか？
+
+ウォーターサーバーは長く使う商品ですので、契約後のサポート内容も大切なポイントになります。
+
+会社によっては修理対応やアフターサービスが有料の場合もございますので、一度契約内容を確認してみた方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+<details>
+<summary>間違った説明をされている可能性</summary>
+<div class="script">
+ウォーターサーバー本体を新しくされたい場合は、ご相談させてください。
+
+他社のサーバーとウォータースタンドのサーバーは異なりますので、契約内容を一度確認された方が良いと思います。
+</div>
+<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+</details>
+
+</details>
+<div id="goal_route"></div>
+<details id="goal" open>
+<summary>最終意思確認</summary>
+<span class="badge">ゴール：契約内容確認の同意</span>
+
+<div class="script">弊社としては解約は承っておりますのでご安心ください。
+
+ただ、契約内容やサーバー性能はきちんと確認してから判断された方が、絶対に後悔はありません。
+
+まだ契約取り消しやクーリングオフが間に合う可能性があります。
+一度確認してみませんか。</div>
+
+
+</details>
+
+
+
+</main>
+</body>
+</html>
