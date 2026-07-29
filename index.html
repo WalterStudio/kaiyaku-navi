@@ -2,44 +2,64 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>解約防止ナビ Ver3.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#005bac">
+<title>解約防止ナビ Ver5.2｜JALウォーター対応・結果入力なし</title>
 <style>
-body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;margin:0;background:#f5f7fb;color:#222}
-header{background:#0f5caa;color:#fff;padding:18px 14px;text-align:center}
-h1{font-size:22px;margin:0}
-main{max-width:900px;margin:0 auto;padding:14px}
-.card,details{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 6px 18px rgba(0,0,0,.08)}
-summary{font-size:19px;font-weight:800;cursor:pointer}
-h2{font-size:20px;margin:0 0 12px}
-h3{font-size:17px;margin:18px 0 8px}
-.script{background:#eef6ff;border-left:5px solid #0f5caa;padding:12px;border-radius:10px;line-height:1.75;white-space:pre-wrap}
-.badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;margin:10px 0;background:#ecfdf3;color:#027a48}
-.orange{background:#fffaeb;color:#b54708}
-.red{background:#fef3f2;color:#b42318}
-.blue{background:#eff8ff;color:#175cd3}
-ul,ol{line-height:1.8}
-.nav a{display:block;background:#0f5caa;color:#fff;text-decoration:none;padding:14px;border-radius:12px;margin:8px 0;font-weight:800;text-align:center}
-.nav a.sub{background:#667085}
-.copybox{width:100%;box-sizing:border-box;min-height:170px;border:1px solid #d0d5dd;border-radius:12px;padding:12px;font-size:15px;line-height:1.6}
-.small{font-size:13px;color:#eaf2ff}
-.note{font-size:14px;color:#667085;line-height:1.7}
-table{width:100%;border-collapse:collapse;margin-top:10px}
-th,td{border:1px solid #d0d5dd;padding:10px;text-align:left;vertical-align:top}
-th{background:#f2f4f7}
+:root{
+  --blue:#005bac;--blue-dark:#003b73;--blue-soft:#eef6ff;--line:#d0d5dd;
+  --text:#1f2937;--muted:#475467;--bg:#f6f8fb;--red:#b42318;--orange:#b54708;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;margin:0;background:var(--bg);color:var(--text)}
+header{background:#fff;color:#0f172a;padding:24px 18px;border-bottom:5px solid var(--blue);text-align:left;position:sticky;top:0;z-index:5}
+header h1{max-width:1020px;margin:0 auto 5px;font-size:27px;font-weight:900}
+header .small{max-width:1020px;margin:0 auto;color:var(--muted);font-size:13px}
+main{max-width:1020px;margin:0 auto;padding:18px 14px 52px}
+.card,details{background:#fff;border:1px solid var(--line);border-radius:11px;padding:17px;margin-bottom:14px;box-shadow:0 2px 8px rgba(16,24,40,.06)}
+details details{box-shadow:none;margin-top:10px;background:#fcfcfd}
+summary{font-size:18px;font-weight:850;cursor:pointer;color:var(--blue-dark)}
+h2{font-size:20px;margin:0 0 10px;color:var(--blue-dark)}
+h3{font-size:16px;margin:18px 0 8px;color:var(--blue-dark);border-left:4px solid var(--blue);padding-left:8px}
+.script{background:#f8fbff;border:1px solid #cfe2f3;border-left:5px solid var(--blue);padding:12px;border-radius:8px;line-height:1.78;white-space:pre-wrap}
+.script.jal{border-left-color:#d71920;background:#fffafa;border-color:#f1c7c9}
+.badge{display:inline-block;padding:5px 10px;border-radius:999px;background:#eaf4ff;color:var(--blue);font-weight:850;margin:10px 0;font-size:13px}
+.badge.red{background:#fef3f2;color:var(--red)}.badge.orange{background:#fff7ed;color:var(--orange)}.badge.jal{background:#fff1f1;color:#b51218}.badge.green{background:#ecfdf3;color:#027a48}.badge.gray{background:#f2f4f7;color:#344054}
+.note{font-size:14px;color:var(--muted);background:#f9fafb;border:1px solid #eaecf0;padding:10px;border-radius:8px;line-height:1.7}
+.warning{font-size:14px;color:#7a271a;background:#fffbfa;border:1px solid #fecdca;padding:11px;border-radius:8px;line-height:1.7;font-weight:700}
+.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.nav a{background:var(--blue);color:#fff;text-decoration:none;text-align:center;padding:12px;border-radius:8px;font-weight:850}.nav a.jal{background:#c8102e}.nav a.gray{background:#667085}
+a{color:var(--blue);font-weight:800;text-decoration:none}p a[href^="#"]{display:inline-block;background:var(--blue-soft);border:1px solid #cfe2f3;padding:9px 12px;border-radius:8px;margin:2px 0}
+ul,ol{line-height:1.8;padding-left:24px}
+.route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.route-card{border:1px solid var(--line);border-radius:10px;padding:13px;background:#fff}.route-card h3{margin-top:0}.route-card.jal{border:2px solid #d71920;background:#fffafa}.route-card a{display:block;text-align:center;padding:10px;border-radius:8px;background:var(--blue);color:#fff}.route-card.jal a{background:#c8102e}
+.choice-links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.choice-links a{display:block;padding:11px;border-radius:8px;border:1px solid #cfe2f3;background:#eef6ff;text-align:center}.choice-links a.no{border-color:#fecdca;background:#fff4f3;color:var(--red)}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}th{background:#f2f4f7}.small{font-size:13px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.form-grid label{font-size:13px;font-weight:850;color:#344054;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px;font-size:15px;background:#fff;color:#101828}textarea{min-height:92px;resize:vertical}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}button,.btn{border:0;border-radius:8px;padding:12px 14px;font-weight:900;cursor:pointer;text-decoration:none;display:inline-block}.primary{background:var(--blue);color:#fff}.secondary{background:var(--blue-soft);color:var(--blue);border:1px solid #cfe2f3}.danger{background:#fef3f2;color:var(--red);border:1px solid #fecdca}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}.stat{background:#f8fbff;border:1px solid #cfe2f3;border-radius:10px;padding:12px}.stat b{display:block;font-size:24px;color:var(--blue-dark)}.stat span{font-size:12px;color:var(--muted);font-weight:850}
+.hidden{display:none!important}.hidden-admin-panel{display:none!important}.admin-lock{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px;margin-top:12px}.mini-table{font-size:13px}.mini-table th,.mini-table td{padding:7px}
+.route-picker{padding:0;margin:0;border:0;box-shadow:none;background:transparent}.route-picker summary{list-style:none;border:1px solid var(--line);border-radius:8px;padding:11px;font-size:15px;font-weight:400;color:#101828;background:#fff;display:flex;align-items:center;justify-content:space-between}.route-picker summary::-webkit-details-marker{display:none}.route-picker summary:after{content:"⌄";font-weight:900}.route-picker[open] summary:after{content:"⌃"}.route-picker-menu{background:#fff;border:1px solid var(--line);border-radius:10px;margin-top:8px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;box-shadow:0 6px 18px rgba(16,24,40,.08)}.check-item{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:750;color:#344054;padding:7px;border-radius:7px}.check-item input{width:auto}.field-hint{font-size:12px;color:#667085;margin:4px 0 8px}
+.report-box{background:#f8fbff;border:1px solid #cfe2f3;border-radius:10px;padding:14px;margin-top:14px}.report-output{min-height:250px;line-height:1.7;background:#fff}
+.source{font-size:12px;color:#667085}.source a{font-weight:700}
+@media(max-width:760px){header{position:static}header h1{font-size:23px}.form-grid,.route-grid,.nav,.choice-links{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.route-picker-menu{grid-template-columns:1fr}button,.btn{width:100%;text-align:center}.wide{grid-column:auto!important}}
 </style>
 </head>
 <body>
 <header>
-<h1>解約防止ナビ Ver3.0</h1>
-<div class="small">催事乗換・サーバー別入口トーク・契約内容確認ゴール</div>
+  <h1>解約防止ナビ Ver5.2</h1>
+  <div class="small">社内共有版｜JALウォーター公式Webルート対応</div>
 </header>
-
 <main>
 
 <div class="card">
-<h2>共通導入</h2>
-<div class="script">〇〇様
+  <h2>運用目的</h2>
+  <p class="note">他社契約を否定するのではなく、お客様が契約内容・サーバー性能・アフターサービスを確認し、納得して判断できるよう支援するためのナビです。</p>
+</div>
+
+<div class="card">
+  <h2>共通導入</h2>
+  <div class="script">〇〇様
 
 お世話になっております。
 ウォータースタンドの〇〇です。
@@ -49,29 +69,19 @@ th{background:#f2f4f7}
 
 ありがとうございます。
 お送りさせていただいたメールはご覧いただけましたか？</div>
-
-<p class="note">目的：継続を迫るのではなく、他社の契約内容を確認してから判断してもらうこと。</p>
-
-<div class="nav">
-<a href="#flow">全体フロー</a>
-<a href="#event_route">催事ルート</a>
-<a href="#rescue_route">救済ルート</a>
-<a href="#server_map">サーバー入口別ルート一覧</a>
-
-
-
-
-
-
-
-
+  <p class="note">目的：継続を迫るのではなく、他社の契約内容を確認した上で判断していただくこと。</p>
+  <div class="nav">
+    <a href="#flow">全体フロー</a>
+    <a class="jal" href="#jal_route">JALウォータールート</a>
+    <a href="#event_route">催事ルート</a>
+    <a href="#server_map">サーバー別ルート</a>
+    <a href="#goal_route">最終意思確認</a>
+  </div>
 </div>
-</div>
-
 
 <details id="flow" open>
 <summary>全体フロー</summary>
-<span class="badge blue">上から順番に進める</span>
+<span class="badge">上から順番に確認</span>
 
 <h3>STEP0：共通の電話入口</h3>
 <div class="script">〇〇様
@@ -85,45 +95,129 @@ th{background:#f2f4f7}
 ありがとうございます。
 お送りさせていただいたメールはご覧いただけましたか？</div>
 
-<h3>STEP1：契約場所を確認</h3>
-<div class="script">ちなみに、どちらでご案内を受けられましたか？</div>
-<ul>
-<li>ドン・キホーテ</li>
-<li>ロピア</li>
-<li>ららぽーと</li>
-<li>アリオ</li>
-<li>コストコ</li>
-<li>ホームセンター</li>
-<li>その他</li>
-</ul>
-
-<p class="note">ショッピングモール・量販店・催事会場の場合は催事ルートへ。</p>
-<p><a href="#event_route">▶ 催事ルートへ</a></p>
+<h3>STEP1：申込経路を確認</h3>
+<div class="script">ちなみに、今回のサーバーはどちらで知って、お申し込みされましたか？</div>
+<div class="route-grid">
+  <div class="route-card jal">
+    <h3>JALウォーター</h3>
+    <p>JAL公式サイト・広告・メール等からのWeb申込み</p>
+    <a href="#jal_route">JAL専用ルートへ</a>
+  </div>
+  <div class="route-card">
+    <h3>催事・店頭案内</h3>
+    <p>ドンキ、ロピア、商業施設、ホームセンター等</p>
+    <a href="#event_route">催事ルートへ</a>
+  </div>
+  <div class="route-card">
+    <h3>Web・比較サイト</h3>
+    <p>メーカー公式、広告、比較サイト等</p>
+    <a href="#server_map">サーバー別ルートへ</a>
+  </div>
+  <div class="route-card">
+    <h3>電話・訪問・その他</h3>
+    <p>申込経路と説明内容を確認してから判断</p>
+    <a href="#server_map">サーバー別ルートへ</a>
+  </div>
+</div>
 
 <h3>STEP2：契約サーバーを確認</h3>
 <div class="script">どちらのサーバーをご契約されましたか？</div>
 <ul>
-<li>エブリィフレシャス</li>
-<li>ハミングウォーター</li>
-<li>ロッカ</li>
-<li>しずくりあ</li>
-<li>スキット</li>
-<li>プレミアムウォーター</li>
-<li>コスモウォーター</li>
-<li>ウォーターワン</li>
+  <li><strong>JALウォーター</strong>（浄水型／天然水型を確認）</li>
+  <li>エブリィフレシャス</li><li>ハミングウォーター</li><li>ロッカ</li><li>しずくりあ</li><li>スキット</li><li>プレミアムウォーター</li><li>コスモウォーター</li><li>ウォーターワン</li>
+</ul>
+</details>
+
+<div id="jal_route"></div>
+<details id="jal" open>
+<summary>JALウォーター専用ルート</summary>
+<span class="badge jal">公式Web・JALブランド・マイル訴求に対応</span>
+
+<h3>STEP1：申込経路の確認</h3>
+<div class="script jal">JALウォーターですね。
+JALの公式サイトや、JALから届いたご案内を見てお申し込みされましたか？</div>
+<p class="note">「はい」なら催事ルートへは進まず、このJAL専用ルートを使用する。対面・電話で勧誘を受けた場合は、実際の販売方法を確認して該当ルートへ。</p>
+
+<h3>STEP2：決め手を聞く</h3>
+<div class="script jal">今回、JALウォーターを選ばれた一番の決め手は、
+マイル、月額料金、サーバー機能、JALブランドの安心感のうち、どの部分でしたか？</div>
+<ul>
+  <li>マイル・Life Statusポイント</li>
+  <li>JALブランドへの安心感</li>
+  <li>月額料金</li>
+  <li>サーバーの見た目・機能</li>
+  <li>天然水または浄水型という商品性</li>
 </ul>
 
-<p class="note">サーバー名が分かったら、下の「サーバー入口別ルート一覧」から該当サーバーを開く。</p>
-<p><a href="#server_map">▶ サーバー入口別ルート一覧へ</a></p>
+<h3>決め手が「マイル／JALブランド」の場合</h3>
+<div class="script jal">マイルが貯まる点や、JALのサービスという安心感は魅力ですよね。
 
+ただ、ウォーターサーバーは毎日長く使う商品ですので、
+特典だけでなく、契約期間・途中解約時の費用・お水やフィルターの条件・故障時の対応まで確認しておくと安心です。
+
+そのあたりも確認された上でのお申し込みでしたか？</div>
+
+<h3>STEP3：浄水型か天然水型か確認</h3>
+<div class="script jal">今回お申し込みされたのは、
+水道水を注いで使う「浄水型」と、天然水ボトルが届く「天然水型」のどちらですか？</div>
+<div class="choice-links">
+  <a href="#jal_purified">浄水型 → Locca系確認</a>
+  <a href="#jal_natural">天然水型 → プレミアムウォーター系確認</a>
+</div>
+
+<div id="jal_purified"></div>
+<details open>
+<summary>JALウォーター：浄水型</summary>
+<span class="badge jal">Locca系の契約内容を確認</span>
+<h3>入口トーク</h3>
+<div class="script jal">浄水型ですね。
+フィルターの交換条件や利用目安、契約期間、途中解約時の費用、故障時のサポートについては確認されましたか？</div>
+<h3>未確認の場合</h3>
+<div class="script jal">同じ浄水型でも、フィルターの条件や契約期間、アフターサービスは会社やプランによって異なります。
+
+弊社は定期メンテナンスや故障時の対応を含め、担当者へ直接ご相談いただけます。
+特典だけでなく、長く使う条件を一度比較してから判断されませんか？</div>
+<div class="choice-links">
+  <a href="#jal_web_goal">✅ 確認する → JAL Web最終確認</a>
+  <a class="no" href="#goal_route">❌ 意思が固い → 共通最終確認</a>
+</div>
+</details>
+
+<div id="jal_natural"></div>
+<details open>
+<summary>JALウォーター：天然水型</summary>
+<span class="badge jal">プレミアムウォーター系の契約内容を確認</span>
+<h3>入口トーク</h3>
+<div class="script jal">天然水型ですね。
+毎月のお水の注文条件や休止時の扱い、契約期間、途中解約時の費用については確認されましたか？</div>
+<h3>未確認の場合</h3>
+<div class="script jal">天然水型は、お水代だけでなく、配送の条件や休止時の扱い、契約期間も長く使う上で大切な部分です。
+
+マイルの特典を含めて魅力のあるサービスですが、毎月の使い方と総額がご家庭に合うか、一度契約内容を確認してから判断されませんか？</div>
+<div class="choice-links">
+  <a href="#jal_web_goal">✅ 確認する → JAL Web最終確認</a>
+  <a class="no" href="#goal_route">❌ 意思が固い → 共通最終確認</a>
+</div>
+</details>
+
+<div id="jal_web_goal"></div>
+<details open>
+<summary>JAL公式Web申込み：最終確認</summary>
+<span class="badge red">催事と同じクーリングオフ案内はしない</span>
+<div class="script jal">JALの公式Webサイトからのお申し込みであれば、催事や訪問販売とは契約方法が異なります。
+
+まず、申込日・発送状況・設置日と、申込先に記載されているキャンセル条件を確認してみてください。
+その上で、契約期間や費用、サーバーの条件を比較してから最終判断されるのが安心です。</div>
+<p class="warning">Web上で自ら申し込む通信販売には、一般的なクーリング・オフ制度はありません。現場で「クーリングオフできます」と断定せず、申込先の規約・キャンセル窓口・個別の販売方法を確認してください。</p>
+</details>
+
+<p class="source">確認元：<a href="https://www.jal.co.jp/jp/ja/jmb/jal-water/" target="_blank" rel="noopener">JALウォーター公式</a>／<a href="https://www.jal.co.jp/jp/ja/jmb/jal-water/qa/" target="_blank" rel="noopener">JALウォーターQ&amp;A</a>／<a href="https://www.no-trouble.caa.go.jp/case/mailorder/case01.html" target="_blank" rel="noopener">消費者庁・通信販売</a></p>
 </details>
 
 <div id="event_route"></div>
-<details id="event" open>
+<details id="event">
 <summary>催事ルート</summary>
 <span class="badge orange">ドンキ・ロピア・ららぽーと等で発動</span>
-
-
 <h3>トーク</h3>
 <div class="script">ご存知ない方も多いんですが、
 
@@ -131,324 +225,207 @@ th{background:#f2f4f7}
 ご案内専門の営業会社さんが担当されている場合があります。
 
 今回ご案内いただいた方は、メーカーの方か営業会社さんかご存知ですか？</div>
-
 <h3>お客様が「わからない」と言った場合</h3>
 <div class="script">ちなみに、いろんなメーカーのサーバーを並べていましたか？</div>
-
 <h3>「はい」の場合</h3>
-<div class="script">実はそれ、営業代行の会社が運営している場合が多いんです。
-
-メーカーの担当者ではなく、複数メーカーを取り扱う営業会社がご案内しているケースもあります。
-
-詳しく一度内容を確認した方が良いと思います。</div>
-
-<h3>STEP2：契約サーバーを確認</h3>
-<div class="script">どちらのサーバーをご契約されましたか？</div>
-<ul>
-<li>エブリィフレシャス</li>
-<li>ハミングウォーター</li>
-<li>ロッカ</li>
-<li>しずくりあ</li>
-<li>スキット</li>
-<li>プレミアムウォーター</li>
-<li>コスモウォーター</li>
-<li>ウォーターワン</li>
-</ul>
-
-<p>次のステップを選択してください。</p>
-
+<div class="script">複数メーカーを取り扱う営業会社がご案内しているケースもあります。
+契約先、契約期間、解約費用、説明を受けた内容を一度確認した方が安心です。</div>
 <p><a href="#server_map">▶ サーバー別入口トークへ進む</a></p>
-
-<p style="color:#b42318;font-weight:800;font-size:16px;">
-⚠ お客様が現段階で相手営業への不信感を持っていると感じた場合は、そのまま救済ルート①へ進む。
-</p>
-
-
-<details open>
-
-<summary>救済ルート①</summary>
-<span class="badge red">催事ルート内で使用</span>
-
-<h3>入口トーク</h3>
-<div class="script">営業担当から具体的にどういう説明を受けたか覚えていますか？</div>
-
-<details>
-<summary>月額料金しか聞いていない</summary>
-<div class="script">
-レンタル商品と思って契約したつもりが、実際には買取商品だったというケースもございます。
-
-月額料金だけで判断してしまうと、そのあたりの説明を聞いていない場合もありますので、一度契約内容を見直してみた方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
+<p class="warning">お客様が相手営業への不信感を持っている場合も、他社批判ではなく「説明内容と契約書面の確認」に戻す。</p>
 </details>
-
-<details>
-<summary>フィルター性能を比較できていない</summary>
-<div class="script">
-フィルター性能は、除去項目の数に注目しがちですが、実際は1日に使えるお水の量を確認した方が大切です。
-
-サーバーによっては、1日に3リットル程度しか使えないものもございます。
-
-ご家族で使われる場合や、お料理にも使われる場合は特に重要なポイントになりますので、一度契約内容やサーバー性能を確認してみた方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
-</details>
-
-<details>
-<summary>アフターサービスケアを聞いていない</summary>
-<div class="script">
-アフターサービスや故障時の対応については説明を受けましたか？
-
-ウォーターサーバーは長く使う商品ですので、契約後のサポート内容も大切なポイントになります。
-
-会社によっては修理対応やアフターサービスが有料の場合もございますので、一度契約内容を確認してみた方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
-</details>
-
-<details>
-<summary>間違った説明をされている可能性</summary>
-<div class="script">
-ウォーターサーバー本体を新しくされたい場合は、ご相談させてください。
-
-他社のサーバーとウォータースタンドのサーバーは異なりますので、契約内容を一度確認された方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
-</details>
-</details>
-
-
-
-</details>
-
-<div id="rescue_route"></div>
-
 
 <details id="server_map" open>
 <summary>サーバー入口別ルート一覧</summary>
-<span class="badge">サーバー名を選んで入口トークへ</span>
-<p class="note">契約されたサーバー名を確認し、該当サーバーの入口トークを1つだけ使う。</p>
-
-<h3>入口ルール</h3>
-<ul>
-<li>全部説明しない</li>
-<li>該当サーバーの入口トークを1つだけ使う</li>
-<li>反応があれば契約内容確認へ進む</li>
-<li>最後は「契約内容確認してみませんか？」で着地する</li>
-</ul>
+<span class="badge">該当サーバーの入口トークを1つだけ使う</span>
+<p class="note">全部を一度に説明せず、お客様の決め手や未確認事項に合わせて入口を選ぶ。</p>
 
 <details>
-<summary>エブリィフレシャス</summary>
-<span class="badge">入口：アフターサービス</span>
+<summary>JALウォーター</summary>
+<span class="badge jal">専用ルートあり</span>
+<div class="script jal">JALウォーターは、浄水型と天然水型で確認項目が異なります。
+まず申込経路とサーバータイプを確認してください。</div>
+<p><a href="#jal_route">▶ JALウォーター専用ルートへ</a></p>
+</details>
 
-<h3>入口トーク</h3>
+<details>
+<summary>エブリィフレシャス</summary><span class="badge">入口：アフターサービス</span>
 <div class="script">故障した時やフィルター交換の時の対応は確認されましたか？</div>
-
-<h3>未確認の場合</h3>
-<div class="script">アフターサービスや修理対応は、有料サービスの会社もあります。
-
-弊社は全て無料で対応させていただいております。
-
-また、お客様1人につき担当が1人つきますので、
-何かあった際も営業所へ直接ご相談いただけます。
-
-一度、契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+<div class="script">アフターサービスや修理対応は、有料サービスの場合もあります。
+弊社は定期メンテナンスや故障時の対応を含め、担当者へ直接ご相談いただけます。
+一度、契約内容を確認してみませんか？</div>
 </details>
-<details>
-<summary>ハミングウォーター</summary>
-<span class="badge">入口：アフターサービス</span>
 
-<h3>入口トーク</h3>
+<details>
+<summary>ハミングウォーター</summary><span class="badge">入口：アフターサービス</span>
 <div class="script">契約後のサポート体制は確認されましたか？</div>
-
-<h3>未確認の場合</h3>
-<div class="script">アフターサービスや修理対応は、有料サービスの会社もあります。
-
-弊社は全て無料で対応させていただいております。
-
-また、お客様1人につき担当が1人つきますので、
-何かあった際も営業所へ直接ご相談いただけます。
-
-一度、契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+<div class="script">ウォーターサーバーは長く使う商品ですので、修理・交換・フィルター・問い合わせ方法まで確認してから比較することが大切です。
+一度、契約内容を確認してみませんか？</div>
 </details>
-<details>
-<summary>ロッカ</summary>
-<span class="badge">入口：フィルター性能</span>
 
-<h3>入口トーク</h3>
-<div class="script">フィルターの性能は比較していただいていますか？</div>
-
-<h3>未比較の場合</h3>
-<div class="script">ロッカさんは除去項目数は多いんですが、
-1日にご利用いただける目安量は約3L程度になります。
-
-弊社のピュアライフは1日10Lを目安にご利用いただけます。
-
-また、サーバーによっては現在の月額料金を抑えることも可能です。
-
-一度、契約内容を見直してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
-
-<p class="note">補足：月額の話が出た場合も、月額だけで戦わず「フィルター使用量」と「契約内容確認」に戻す。</p>
+<details id="locca_route">
+<summary>ロッカ</summary><span class="badge">入口：フィルター・契約条件</span>
+<div class="script">フィルターの利用条件や契約期間、途中解約時の費用は比較されていますか？</div>
+<div class="script">除去項目数だけでなく、フィルターの交換条件や利用目安、契約期間、アフターサービスも長く使う上で重要です。
+一度、契約内容を見直してみませんか？</div>
 </details>
+
 <details>
-<summary>しずくりあ</summary>
-<span class="badge">入口：契約内容・所有権</span>
-
-<h3>入口トーク</h3>
-<div class="script">契約期間や所有権については確認されましたか？</div>
-
-<h3>未確認の場合</h3>
-<div class="script">実はその部分を後から知る方も少なくありません。
-
-特に所有権や契約条件は、途中で変更できない部分になります。
-
-一度、契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+<summary>しずくりあ</summary><span class="badge">入口：契約内容・所有権</span>
+<div class="script">契約期間や、契約終了後のサーバーの所有権については確認されましたか？</div>
+<div class="script">所有権や途中解約時の条件は、後から変更しにくい大切な部分です。
+契約書面を一度確認してみませんか？</div>
 </details>
+
 <details>
-<summary>スキット</summary>
-<span class="badge">入口：契約内容・所有権</span>
-
-<h3>入口トーク</h3>
-<div class="script">契約期間や所有権については確認されましたか？</div>
-
-<h3>未確認の場合</h3>
-<div class="script">実はその部分を後から知る方も少なくありません。
-
-特に所有権や契約条件は、途中で変更できない部分になります。
-
-一度、契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+<summary>スキット</summary><span class="badge">入口：契約内容・所有権</span>
+<div class="script">契約期間や、契約終了後のサーバーの所有権については確認されましたか？</div>
+<div class="script">所有権や途中解約時の条件は、後から変更しにくい大切な部分です。
+契約書面を一度確認してみませんか？</div>
 </details>
-<details>
-<summary>プレミアムウォーター</summary>
-<span class="badge">入口：契約期間・解約費</span>
 
-<h3>入口トーク</h3>
-<div class="script">契約期間や解約費用については確認されましたか？</div>
-
-<h3>未確認の場合</h3>
-<div class="script">プレミアムウォーターさんも人気の商品です。
-
-ただ、契約期間や解約費用は長く使う上で大切な部分になります。
-
-一度、契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+<details id="premium_route">
+<summary>プレミアムウォーター</summary><span class="badge">入口：配送・契約期間・解約費</span>
+<div class="script">毎月のお水の注文条件や休止時の扱い、契約期間、途中解約時の費用については確認されましたか？</div>
+<div class="script">天然水型は、お水代だけでなく配送条件や休止時の扱いも重要です。
+一度、毎月の使い方と契約内容を確認してみませんか？</div>
 </details>
+
 <details>
-<summary>コスモウォーター</summary>
-<span class="badge">入口：契約期間・解約費</span>
-
-<h3>入口トーク</h3>
-<div class="script">契約期間や解約費用については確認されましたか？</div>
-
-<h3>未確認の場合</h3>
-<div class="script">コスモウォーターさんも人気の商品です。
-
-ただ、契約期間や解約費用は長く使う上で大切な部分になります。
-
-一度、契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
+<summary>コスモウォーター</summary><span class="badge">入口：契約期間・解約費</span>
+<div class="script">契約期間や解約費用、定期配送の条件については確認されましたか？</div>
+<div class="script">月額だけでなく、長く使った場合の総額と途中解約時の条件を一度確認してみませんか？</div>
 </details>
-<details>
-<summary>ウォーターワン</summary>
-<span class="badge red">未攻略・重点確認</span>
 
-<h3>入口トーク</h3>
+<details>
+<summary>ウォーターワン</summary><span class="badge red">未攻略・重点確認</span>
 <div class="script">ちなみに、どの部分が今のサーバーと同じという説明でしたか？</div>
-
-<h3>「同じサーバーです」「月額が安くなります」と言われた場合</h3>
-<div class="script">サーバー本体が同じでも、
-契約内容やアフターサービスは会社ごとに異なる場合があります。
-
-本当に同じ条件かどうか、
-一度契約内容を確認してみませんか？<br><br>
-<a href="#rescue2">✅ イエス → 救済ルート②へ</a><br>
-<a href="#goal_route">❌ ノー → 最終意思確認へ</a><br>
-
-<p class="note">記録推奨：ウォーターワンは未攻略枠。何と言われたか、何に反応したかを必ずメモ。</p>
+<div class="script">サーバー本体が同じように見えても、契約内容やアフターサービスは会社ごとに異なる場合があります。
+本当に同じ条件かどうか、一度確認してみませんか？</div>
+<p class="note">記録推奨：何と言われたか、何が決め手だったか、どの説明に反応したかを残す。</p>
 </details>
-</details>
-<details id="rescue2" open>
 
-<summary>救済ルート②（説明内容確認）</summary>
+<p><a href="#rescue2">▶ 説明内容確認へ</a></p>
+</details>
+
+<details id="rescue2">
+<summary>救済ルート（説明内容確認）</summary>
 <span class="badge red">契約内容を確認したいと言われた時</span>
-
 <h3>入口トーク</h3>
-<div class="script">営業担当の方から、具体的にどういう説明を受けたか覚えていますか？</div>
-
-<details>
-<summary>月額料金しか聞いていない</summary>
-<div class="script">
-レンタル商品と思って契約したつもりが、実際には買取商品だったというケースもございます。
-
-月額料金だけで判断してしまうと、そのあたりの説明を聞いていない場合もありますので、一度契約内容を見直してみた方が良いと思います。
-</div>
+<div class="script">営業担当の方や申込画面から、具体的にどういう説明を受けたか覚えていますか？</div>
+<details><summary>月額料金・特典だけで決めた</summary><div class="script">月額料金や特典だけで判断すると、契約期間・途中解約費・所有権・配送条件などを十分確認できていない場合があります。
+一度、契約書面や申込画面を見直してみた方が安心です。</div></details>
+<details><summary>フィルター性能を比較できていない</summary><div class="script">除去項目数だけでなく、フィルターの利用目安・交換条件・ご家庭で使う水量に合うかを確認することが大切です。
+契約内容やサーバー性能を一度比較してみませんか？</div></details>
+<details><summary>アフターサービスを聞いていない</summary><div class="script">故障、修理、交換、問い合わせ先、訪問対応の有無については説明を受けましたか？
+長く使う商品ですので、契約後のサポート内容も確認しておくと安心です。</div></details>
+<details><summary>説明と実際の内容が違う可能性</summary><div class="script">現場で断定せず、契約書面・申込画面・公式窓口で事実を確認しましょう。
+確認した上で、どちらがご家庭に合うか改めて判断していただくのが安心です。</div></details>
 <p><a href="#goal_route">▶ 最終意思確認へ</a></p>
 </details>
 
-<details>
-<summary>フィルター性能を比較できていない</summary>
-<div class="script">
-フィルター性能は、除去項目の数に注目しがちですが、実際は1日に使えるお水の量を確認した方が大切です。
-
-サーバーによっては、1日に3リットル程度しか使えないものもございます。
-
-ご家族で使われる場合や、お料理にも使われる場合は特に重要なポイントになりますので、一度契約内容やサーバー性能を確認してみた方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
-</details>
-
-<details>
-<summary>アフターサービスケアを聞いていない</summary>
-<div class="script">
-アフターサービスや故障時の対応については説明を受けましたか？
-
-ウォーターサーバーは長く使う商品ですので、契約後のサポート内容も大切なポイントになります。
-
-会社によっては修理対応やアフターサービスが有料の場合もございますので、一度契約内容を確認してみた方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
-</details>
-
-<details>
-<summary>間違った説明をされている可能性</summary>
-<div class="script">
-ウォーターサーバー本体を新しくされたい場合は、ご相談させてください。
-
-他社のサーバーとウォータースタンドのサーバーは異なりますので、契約内容を一度確認された方が良いと思います。
-</div>
-<p><a href="#goal_route">▶ 最終意思確認へ</a></p>
-</details>
-
-</details>
 <div id="goal_route"></div>
 <details id="goal" open>
-<summary>最終意思確認</summary>
-<span class="badge">ゴール：契約内容確認の同意</span>
-
+<summary>共通の最終意思確認</summary>
+<span class="badge green">ゴール：納得して判断できる状態</span>
 <div class="script">弊社としては解約は承っておりますのでご安心ください。
 
-ただ、契約内容やサーバー性能はきちんと確認してから判断された方が、絶対に後悔はありません。
+ただ、契約内容やサーバー性能はきちんと確認してから判断された方が、後悔がありません。
 
-まだ契約取り消しやクーリングオフが間に合う可能性があります。
-一度確認してみませんか。</div>
-
-
+申込経路、契約日、設置・発送状況、契約期間、途中解約時の条件を一度確認してみませんか。</div>
+<p class="warning">クーリングオフの可否は販売方法によって異なります。Web申込みに対して一律に「クーリングオフできる」と案内しないでください。</p>
 </details>
 
+<details id="admin_stats" class="hidden-admin-panel">
+<summary>管理者統計（拓馬確認用）</summary>
+<span class="badge red">管理者専用</span>
+<p class="note">URL末尾に <strong>#takuma-admin</strong> を付けた時だけ表示。過去バージョンでこの端末・ブラウザ内に保存したデータを確認できます。</p>
+<div id="lockArea" class="admin-lock"><label for="adminPass">管理パスコード</label><input id="adminPass" type="password" placeholder="パスコードを入力"><div class="btn-row"><button type="button" id="unlockAdmin" class="primary">統計を見る</button></div></div>
+<div id="adminArea" class="hidden">
+  <div class="stats"><div class="stat"><b id="totalCount">0</b><span>利用件数</span></div><div class="stat"><b id="successCount">0</b><span>防止成功</span></div><div class="stat"><b id="holdCount">0</b><span>保留</span></div><div class="stat"><b id="successRate">0%</b><span>成功率</span></div></div>
+  <h3>解約理由ランキング</h3><table class="mini-table"><thead><tr><th>理由</th><th>件数</th></tr></thead><tbody id="reasonStats"></tbody></table>
+  <h3>サーバー別件数</h3><table class="mini-table"><thead><tr><th>サーバー</th><th>件数</th></tr></thead><tbody id="serverStats"></tbody></table>
+  <h3>申込経路別件数</h3><table class="mini-table"><thead><tr><th>申込経路</th><th>件数</th></tr></thead><tbody id="applicationRouteStats"></tbody></table>
+  <h3>保存データ</h3><div style="overflow:auto"><table class="mini-table"><thead><tr><th>日時</th><th>担当</th><th>お客様</th><th>契約CD</th><th>サーバー</th><th>申込経路</th><th>決め手</th><th>理由</th><th>結果</th></tr></thead><tbody id="dataRows"></tbody></table></div>
+  <div class="btn-row"><button type="button" id="downloadCsv" class="primary">CSV出力</button><button type="button" id="clearData" class="danger">保存データ削除</button></div>
+</div>
+</details>
 
+<div class="card">
+<h2>運用ルール</h2>
+<ul>
+  <li>他社批判ではなく、契約内容確認を促す目的で使用する</li>
+  <li>JALブランドやマイルの魅力自体を否定しない</li>
+  <li>事実確認できていない料金・性能・契約条件を断定しない</li>
+  <li>Web申込み、催事、電話勧誘、訪問販売を同じ扱いにしない</li>
+  <li>法的判断は現場で断定せず、契約先・会社運用・公的窓口の確認を優先する</li>
+</ul>
+</div>
 
 </main>
+<script>
+(function(){
+  'use strict';
+  const STORAGE_KEY='kaiyaku_navi_results_v5';
+  const ADMIN_PASS='takuma59';
+  const $=id=>document.getElementById(id);
+  const load=()=>{try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch(e){return[]}};
+  const esc=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const countBy=(rows,key)=>rows.reduce((o,r)=>{const v=r[key]||'未入力';o[v]=(o[v]||0)+1;return o},{});
+  const countMulti=(rows,key)=>rows.reduce((o,r)=>{String(r[key]||'').split(' → ').map(x=>x.trim()).filter(Boolean).forEach(v=>o[v]=(o[v]||0)+1);return o},{});
+  const tableRows=obj=>Object.entries(obj).sort((a,b)=>b[1]-a[1]).map(([k,v])=>'<tr><td>'+esc(k)+'</td><td>'+v+'</td></tr>').join('')||'<tr><td colspan="2">データなし</td></tr>';
+
+  function render(){
+    const rows=load(),total=rows.length,success=rows.filter(r=>r.result==='解約防止成功').length,hold=rows.filter(r=>r.result==='保留').length;
+    $('totalCount').textContent=total;
+    $('successCount').textContent=success;
+    $('holdCount').textContent=hold;
+    $('successRate').textContent=total?Math.round(success/total*100)+'%':'0%';
+    $('reasonStats').innerHTML=tableRows(countMulti(rows,'reason'));
+    $('serverStats').innerHTML=tableRows(countBy(rows,'server'));
+    $('applicationRouteStats').innerHTML=tableRows(countBy(rows,'applicationRoute'));
+    $('dataRows').innerHTML=rows.slice().reverse().map(r=>`<tr><td>${esc(r.datetime)}</td><td>${esc(r.staff)}</td><td>${esc(r.customer)}</td><td>${esc(r.contractCd)}</td><td>${esc(r.server)}</td><td>${esc(r.applicationRoute)}</td><td>${esc(r.decisionFactor)}</td><td>${esc(r.reason)}</td><td>${esc(r.result)}</td></tr>`).join('')||'<tr><td colspan="9">データなし</td></tr>';
+  }
+
+  $('unlockAdmin').addEventListener('click',()=>{
+    if($('adminPass').value===ADMIN_PASS){
+      $('lockArea').classList.add('hidden');
+      $('adminArea').classList.remove('hidden');
+      render();
+    }else{
+      alert('パスコードが違います。');
+    }
+  });
+
+  $('downloadCsv').addEventListener('click',()=>{
+    const rows=load();
+    const headers=['日時','担当','お客様名','契約CD','他社乗換サーバー','申込経路','他社を選んだ決め手','解約理由','使用ルート','結果','対応内容','解約の場合はその理由'];
+    const csv=[headers].concat(rows.map(r=>[r.datetime,r.staff,r.customer,r.contractCd,r.server,r.applicationRoute,r.decisionFactor,r.reason,r.route,r.result,r.responseContent,r.cancelReason])).map(cols=>cols.map(v=>'"'+String(v||'').replace(/"/g,'""')+'"').join(',')).join('\n');
+    const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;
+    a.download='解約防止ナビ_既存統計データ.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+
+  $('clearData').addEventListener('click',()=>{
+    if(confirm('この端末に保存されたデータを削除します。よろしいですか？')){
+      localStorage.removeItem(STORAGE_KEY);
+      render();
+    }
+  });
+
+  function revealAdmin(){
+    if(location.hash==='#takuma-admin'){
+      $('admin_stats').classList.remove('hidden-admin-panel');
+      $('admin_stats').open=true;
+      render();
+    }
+  }
+  window.addEventListener('hashchange',revealAdmin);
+  revealAdmin();
+})();
+</script>
 </body>
 </html>
